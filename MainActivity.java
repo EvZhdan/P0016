@@ -38,8 +38,5 @@ public class MainActivity extends AppCompatActivity {
         Button button = new Button(this);
         button.setText("Button");
         linearLayout.addView(button,ipView);
-
-        LinearLayout.LayoutParams leftMarginParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        leftMarginParams.leftMargin = 50;
     }
 }
