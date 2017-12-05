@@ -8,15 +8,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 public class MainActivity extends Activity implements View.OnClickListener {
-
+    private static final String TAG = "myLogs";
     LinearLayout llMain;
     RadioGroup rbGravity;
     EditText etName;
     Button btnCreate;
     Button dtnClear;
-
+    Button btnNew;
+    final int NEWID = 564654;
+    int g;
     int wrapContent = LinearLayout.LayoutParams.WRAP_CONTENT;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,10 +62,19 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 //переносим полученное значение выравнивания в LinearLayout
                 iParams.gravity = btnGravity;
                 //создаем Button, пишем текст и добавляем в LinearLayout
-                Button btnNew = new Button(this);
-                btnNew.setText(etName.getText().toString());
+                btnNew = new Button(this);
+                btnNew.setId(NEWID+1);
+                g = btnNew.getId();
+                String s = Integer.toString(g);
+                btnNew.setText(etName.getText()+ " " +s.toString());
                 llMain.addView(btnNew,iParams);
                 break;
+
+                case R.id.btnClear:
+                    llMain.removeAllViews();
+                    Toast.makeText(this,"Удалено",Toast.LENGTH_SHORT).show();
+                    break;
+            }
         }
     }
-}
+
